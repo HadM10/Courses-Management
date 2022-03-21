@@ -19,6 +19,8 @@ exports.addCourses = async (req, res) => {
     price: req.body.price,
     description: req.body.description,
     photo: req.body.photo,
+    teacher: req.body.teacher,
+    students: req.body.students
   });
 
   try {
@@ -48,6 +50,8 @@ exports.editCourses = async (req, res) => {
     price: req.body.price,
     description: req.body.description,
     photo: req.body.photo,
+    teacher: req.body.teacher,
+    students: req.body.students
   };
   try {
     const updateCourses = await Courses.findByIdAndUpdate({ _id: CourseId }, newCourse);

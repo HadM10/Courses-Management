@@ -5,6 +5,14 @@ const coursesSchema = new mongoose.Schema({
     price: Number,
     description: String,
     photo: String,
+    teacher: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Users"
+    },
+    students: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Users"
+    }]
   
 }, { timestamps: true })
 
