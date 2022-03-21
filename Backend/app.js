@@ -41,7 +41,7 @@ const requestLogger = (request, response, next) => {
 app.use(requestLogger)
 
 //USING ROUTES
-const userRoutes = require('./Server/routes/userRoutes.js')
+const userRoutes = require('./Server/Routes/userRoutes.js')
 const courseRoutes = require('./Server/Routes/courseRoutes.js')
 
 

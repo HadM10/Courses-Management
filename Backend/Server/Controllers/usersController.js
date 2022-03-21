@@ -1,5 +1,5 @@
 //CONNECT TO DATABASE
-const Users = require('../models/Users')
+const Users = require('../Models/Users')
 
 
 // ADD OR POST Users
