@@ -12,16 +12,22 @@ const Login = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 	
+	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const url = "http://localhost:5000/users/login";
 			const { data: res } = await axios.post(url, data);
-			axios.get("http://localhost:5000/users/login")
-			console.log(data);
-			localStorage.setItem("token", data);	
-			navigate("/adminPage");
+			console.log(res.data);
+			localStorage.setItem("token", res.data);
+			const user = localStorage.getItem("token");	
+			if(user == "Teacher") {
+				navigate("/teacherPage");}
+				else if (user == "Admin") {
+					navigate("/adminPage");}
+					else if (user == "Student") {
+						navigate("/studentPage");}
 		} catch (error) {
 			if (
 				error.response &&
