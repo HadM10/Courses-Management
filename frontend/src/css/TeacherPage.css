@@ -84,6 +84,14 @@
     margin-bottom: 100px;
 }
 
+#updated-course-form{
+    display: none;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 .input{
     margin: 10px;
     box-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);

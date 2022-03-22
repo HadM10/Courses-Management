@@ -15,16 +15,16 @@ const user = localStorage.getItem("token");
 function App() {
   return (
     <div className="App">
-     
-        <Routes>
-          {/* <Route path={"/"} element={<Home />} /> */}
-           <Route path="/register" element={<Signup />} />
-           <Route path="/login" exact element={<Login />} />
-           <Route path="/teacherPage" exact element={<TeacherPage />} />
-          <Route path="/studentPage" exact element={<StudentPage />} />
-           <Route path="/adminPage" exact element={<AdminPage />} />
-           <Route path="/" element={<Navigate replace to="/login" />} />
-          </Routes>
+
+      <Routes>
+        {/* <Route path={"/"} element={<Home />} /> */}
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/teacherPage" exact element={<TeacherPage />} />
+        <Route path="/studentPage" exact element={<StudentPage />} />
+        <Route path="/adminPage" exact element={<AdminPage />} />
+        <Route path="/" element={<Navigate replace to="/login" />} />
+      </Routes>
     </div>
   );
 }
