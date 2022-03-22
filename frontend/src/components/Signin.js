@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import styles from "../css/Signin.css";
+import { Link, useNavigate } from "react-router-dom";
+import "../css/Signin.css";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
@@ -16,8 +17,9 @@ const Login = () => {
 		try {
 			const url = "http://localhost:5000/users/login";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/";
+			console.log(data);
+			localStorage.setItem("token", res.data, res.userTypeData);	
+			navigate("/logout");
 		} catch (error) {
 			if (
 				error.response &&

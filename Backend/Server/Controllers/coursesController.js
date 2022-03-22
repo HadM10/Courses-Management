@@ -5,7 +5,7 @@ const Courses = require('../models/Courses')
 exports.getCourses = async (req, res) => {
   try {
     const Course = await Courses.find()
-    res.json(Categories);
+    res.json(Course);
   } catch (error) {
     res.status(404).json({ message: error })
   }
@@ -16,7 +16,7 @@ exports.getCourses = async (req, res) => {
 exports.addCourses = async (req, res) => {
   const newCourse = new Courses({
     title: req.body.title,
-    price: req.body.price,
+    pdf: req.body.pdf,
     description: req.body.description,
     photo: req.body.photo,
     teacher: req.body.teacher,
@@ -47,7 +47,7 @@ exports.editCourses = async (req, res) => {
   const CourseId = req.params.id;
   const newCourse = {
     title: req.body.title,
-    price: req.body.price,
+    pdf: req.body.pdf,
     description: req.body.description,
     photo: req.body.photo,
     teacher: req.body.teacher,

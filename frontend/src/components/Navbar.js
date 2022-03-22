@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, NavItem, NavLink } from "react-bootstrap"
+import Logout from "./Logout";
 import '../css/Navbar.css'
 
 function Navbar() {
@@ -16,6 +17,8 @@ function Navbar() {
         window.addEventListener("scroll", transitionNavBar);
         return () => window.removeEventListener("scroll", transitionNavBar);
     }, []);
+
+    const user = localStorage.getItem("token");
 
     return (
 
@@ -38,7 +41,7 @@ function Navbar() {
                     </NavItem>
                     <NavItem eventKey="Logout">
                         <Link to={"/logout"} className="nav-items">
-                            <span>Logout</span>
+                            {user}<Logout />
                         </Link>
                     </NavItem>
                 </div >

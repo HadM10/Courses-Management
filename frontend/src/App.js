@@ -6,18 +6,19 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Login from "./components/Signin";
 import Logout from "./components/Logout";
+import TeacherPage from './components/TeacherPage';
 
 const user = localStorage.getItem("token");
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+     
         <Routes>
           {/* <Route path={"/"} element={<Home />} /> */}
            <Route path="/register" element={<Signup />} />
            <Route path="/login" exact element={<Login />} />
-           {user && <Route path="/" exact element={<Logout />} />}
+           {user && <Route path="/teacherPage" exact element={<TeacherPage />} />}
            {user==null && <Route path="/" element={<Navigate replace to="/login" />} />}
           </Routes>
     </div>

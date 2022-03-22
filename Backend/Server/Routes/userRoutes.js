@@ -47,6 +47,7 @@ router.post("/login", async (req, res) => {
             return res.status(401).send({ message: "Invalid Email or Password" });
 
         const token = user.generateAuthToken();
+        const userType = Users.userType;
         res.status(200).send({ data: token, message: "logged in successfully" });
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
@@ -61,8 +62,8 @@ const validate = (data) => {
     return schema.validate(data);
 };
 
-router.route('/')
-    .post(usersController.addUser)
+// router.route('/')
+//     .post(usersController.addUser)
 
 router.route('/:id')
     .put(usersController.editUsers)
