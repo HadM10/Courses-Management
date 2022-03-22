@@ -1,5 +1,5 @@
 //CONNECT TO DATABASE
-const Courses = require('../models/Courses')
+const Courses = require('../Models/Courses')
 
 //GET COURSES
 exports.getCourses = async (req, res) => {
@@ -17,7 +17,6 @@ exports.getTeacherCourses = async (req, res) => {
   try {
     const id = req.params.id
     const Course = await Courses.find({teacher: id})
-    .populate({path:"teacher", model:"Users"})
     res.json(Course);
   } catch (error) {
     res.status(404).json({ message: error })
@@ -55,7 +54,7 @@ exports.deleteCourses = async (req, res) => {
   }
 }
 
-//EDIT OR UPDATE Courses
+//EDIT OR UPDATE Whole Courses
 exports.editCourses = async (req, res) => {
   const CourseId = req.params.id;
   const newCourse = {
@@ -65,6 +64,20 @@ exports.editCourses = async (req, res) => {
     photo: req.body.photo,
     teacher: req.body.teacher,
     students: req.body.students
+  };
+  try {
+    const updateCourses = await Courses.findByIdAndUpdate({ _id: CourseId }, newCourse);
+    res.json(updateCourses);
+  } catch (error) {
+    res.status(400).json({ message: error })
+  }
+}
+
+//EDIT OR UPDATE Whole Courses
+exports.editPartsCourses = async (req, res) => {
+  const CourseId = req.params.id;
+  const newCourse = {
+    teacher: req.body.title,
   };
   try {
     const updateCourses = await Courses.findByIdAndUpdate({ _id: CourseId }, newCourse);

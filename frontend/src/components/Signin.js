@@ -19,14 +19,15 @@ const Login = () => {
 		try {
 			const url = "http://localhost:5000/users/login";
 			const { data: res } = await axios.post(url, data);
-			console.log(res.data);
-			localStorage.setItem("token", res.data);
-			const user = localStorage.getItem("token");	
-			if(user == "Teacher") {
+			// console.log(res.data);
+			localStorage.setItem("token", JSON.stringify(res.data));
+			const TokenInfo = JSON.parse(localStorage.getItem("token"));
+			// console.log(TokenInfo[0])
+			if(res.data[0] == "Teacher") {
 				navigate("/teacherPage");}
-				else if (user == "Admin") {
+				else if (res.data[0] == "Admin") {
 					navigate("/adminPage");}
-					else if (user == "Student") {
+					else if (res.data[0] == "Student") {
 						navigate("/studentPage");}
 		} catch (error) {
 			if (

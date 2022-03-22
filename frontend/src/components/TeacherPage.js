@@ -12,11 +12,15 @@ function TeacherPage() {
         description: "",
         photo: "",
         pdf: "",
+        teacher:"",
     });
 
     const handleChange = ({ currentTarget: input }) => {
         setNewCourse({ ...newCourse, [input.name]: input.value });
     };
+
+    const TeacherID = JSON.parse(localStorage.getItem("token"));
+    console.log(TeacherID[2])	
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,7 +40,7 @@ function TeacherPage() {
     }, []);
 
     const retrieveCourses = () => {
-        axios.get("http://localhost:5000/courses", newCourse)
+        axios.get("http://localhost:5000/courses/" + TeacherID[2], Courses)
             .then((response) => {
                 setCourses(response.data)
                 console.log(response.data)
@@ -47,7 +51,9 @@ function TeacherPage() {
     }
 
     const addCourse = () => {
+        newCourse.teacher = TeacherID[2]
         document.getElementById('new-course-form').style.display = "block";
+        
     }
 
     const updateCourse = () =>{
@@ -71,6 +77,7 @@ function TeacherPage() {
 
     const displayCourses = () => {
         return (
+          
             Courses.map((Course) => {
                 return (
                 <>
