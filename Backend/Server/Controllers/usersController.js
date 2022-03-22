@@ -2,24 +2,16 @@
 const Users = require('../Models/Users')
 
 
-// ADD OR POST Users
-// exports.addUser = async (req, res) => {
-//   const newUser = new Users({
-//     fullname: req.body.fullname,
-//     email: req.body.email,
-//     photo: req.body.photo,
-//     age: req.body.age,
-//     password: req.body.password,
-//     userType: req.body.userType
-//   });
-
-//   try {
-//     await newUser.save();
-//     res.json(newUser);
-//   } catch (error) {
-//     res.status(400).json({ message: error })
-//   }
-// }
+//FIND USER
+exports.FindUser = async (req, res) => {
+  try {
+    const theUser = await Users.find({email: req.body.data.email})
+    res.json(theUser);
+    console.log(theUser)
+  } catch (error) {
+    res.status(400).json({ message: error })
+  }
+}
 
 
 //EDIT OR UPDATE Users

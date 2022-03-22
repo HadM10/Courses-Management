@@ -11,15 +11,17 @@ const Login = () => {
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
+	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const url = "http://localhost:5000/users/login";
 			const { data: res } = await axios.post(url, data);
+			axios.get("http://localhost:5000/users/login")
 			console.log(data);
-			localStorage.setItem("token", res.data, res.userTypeData);	
-			navigate("/logout");
+			localStorage.setItem("token", data);	
+			navigate("/adminPage");
 		} catch (error) {
 			if (
 				error.response &&

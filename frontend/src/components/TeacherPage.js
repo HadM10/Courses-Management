@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../css/TeacherPage.css';
 import { Link, useParams } from 'react-router-dom';
 import axios from "../axios";
+import NavbarTeacher from "./NavbarTeacher";
 
 function TeacherPage() {
 
@@ -22,6 +23,7 @@ function TeacherPage() {
 		axios.post("http://localhost:5000/courses", newCourse)
             .then(response => {
                 console.log(response.data)
+                window. location. reload(false);
             })
             .catch(e => {
                 console.log(e)
@@ -50,6 +52,7 @@ function TeacherPage() {
 
     const editCourse = (id) => {
         axios.put(`http://localhost:5000/courses/${id}`)
+        
     }
 
     const deleteCourse = (id) => {
@@ -79,16 +82,20 @@ function TeacherPage() {
     }
     return (
         <div>
-            <h1 className='get-started'>Check All Courses And Enroll</h1>
-            <h2 className='new-skill'>__________Latest Courses__________</h2>
+            <NavbarTeacher />
+            <div className="teacher-header">
+            <h1 className='get-started'>MY COURSES</h1>
+            <h2 className='new-course'>__________Latest Courses__________</h2>
+            </div>
             <div class="">
                 {displayCourses()}
             </div>
             <div className="add-lesson-sign">
-                <img onClick={() => addCourse()} className="add-lesson-img" width='300px' height='auto' src="./add.png"></img>
+                <img onClick={() => addCourse()} className="add-lesson-img" height='auto' src="./add.png"></img>
             </div>
             <div id="new-course-form">
             <form className="form_container" onSubmit={handleSubmit}>
+            <h2>Add A New Course</h2>
                 <input
                     type="text"
                     placeholder="Title"
@@ -115,13 +122,14 @@ function TeacherPage() {
                 />
                 <input
                     type="text"
-                    placeholder="Pdf"
+                    placeholder="PDF"
                     name="pdf"
                     onChange={handleChange}
                     value={newCourse.pdf}
                     className="input"
+                    style={{marginBottom: "50px"}}
                 />
-                <button type="submit" className="">
+                <button type="submit" className="course-button">
                      Add Course
                 </button>
                 </form>

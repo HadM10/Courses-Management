@@ -11,6 +11,19 @@ exports.getCourses = async (req, res) => {
   }
 }
 
+//GET COURSE BY TEACHER
+
+exports.getTeacherCourses = async (req, res) => {
+  try {
+    const id = req.params.id
+    const Course = await Courses.find({teacher: id})
+    .populate({path:"teacher", model:"Users"})
+    res.json(Course);
+  } catch (error) {
+    res.status(404).json({ message: error })
+  }
+}
+
 
 // ADD OR POST Courses
 exports.addCourses = async (req, res) => {

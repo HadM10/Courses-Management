@@ -46,7 +46,8 @@ router.post("/login", async (req, res) => {
         if (!validPassword)
             return res.status(401).send({ message: "Invalid Email or Password" });
 
-        const token = user.generateAuthToken();
+        // const token = user.generateAuthToken();
+        const token = Users.userType
         const userType = Users.userType;
         res.status(200).send({ data: token, message: "logged in successfully" });
     } catch (error) {
@@ -62,8 +63,8 @@ const validate = (data) => {
     return schema.validate(data);
 };
 
-// router.route('/')
-//     .post(usersController.addUser)
+router.route('/')
+    .get(usersController.FindUser)
 
 router.route('/:id')
     .put(usersController.editUsers)

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Nav, NavItem, NavLink } from "react-bootstrap"
 import Logout from "./Logout";
 import '../css/Navbar.css'
 
-function Navbar() {
+function NavbarTeacher() {
+    const navigate = useNavigate()
     const [show, handleShow] = useState(false);
     const transitionNavBar = () => {
         if (window.scrollY > 100) {
@@ -20,28 +21,28 @@ function Navbar() {
 
     const user = localStorage.getItem("token");
 
+    const handleLogout = () => {
+        		localStorage.removeItem("token");
+        	};
+
     return (
 
         <div>
             <Nav className={`nav ${show && 'nav_wood'}`} defaultSelected="Home">
                 <NavItem eventKey="Logo">
                     <Link to={"/"} className='logo'>
+                        <h2 style={{marginTop: "25px"}}>COURSMANIA</h2>
                     </Link>
                 </NavItem>
                 <div className='nav-components'>
-                    <NavItem eventKey="Home">
-                        <Link to={"/"} className="nav-items">
-                            <span>Home</span>
-                        </Link>
-                    </NavItem>
                     <NavItem eventKey="Courses">
                         <Link to={"/courses"} className="nav-items">
                             <span>Courses</span>
                         </Link>
                     </NavItem>
                     <NavItem eventKey="Logout">
-                        <Link to={"/logout"} className="nav-items">
-                            {user}<Logout />
+                        <Link to={"/login"} className="nav-items">
+                            <span onClick={handleLogout}>Logout</span>
                         </Link>
                     </NavItem>
                 </div >
@@ -51,4 +52,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default NavbarTeacher

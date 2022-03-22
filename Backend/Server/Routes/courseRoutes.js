@@ -9,5 +9,6 @@ router.route('/')
 router.route('/:id')
     .put(coursesController.editCourses)
     .delete(coursesController.deleteCourses)
+    .get(coursesController.getTeacherCourses)
 
 module.exports = router

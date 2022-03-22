@@ -1,12 +1,28 @@
+.teacher-header{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+.get-started, .new-course{
+    width: 50%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
     margin: 50px;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);
+    text-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);
+    border: 2px groove wheat;
 
 }
 
 .course-image{
-    width: 400px;
+    width: 300px;
     height: 200px;
 }
 
@@ -34,14 +50,19 @@
 
 }
 
+.course-button:hover{
+    transform: scale(1.08);
+    background-color: #ce0909;
+}
+
 .add-lesson-sign {
-    width: 15%;
+    width: 20%;
     margin: auto;
     height: 200px;
     transition-timing-function: ease-in;
     transition: all 1s;
-   
     object-fit: contain;
+    
 }
 
 .add-lesson-sign:hover {
@@ -51,8 +72,25 @@
 
 .add-lesson-img{
     margin: auto;
+    width: 100%;
+   
 }
 
 #new-course-form{
     display: none;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.input{
+    margin: 10px;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+
+.input:hover{
+    transform: scale(1.05);
 }
