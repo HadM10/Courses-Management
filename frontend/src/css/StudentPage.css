@@ -1,0 +1,74 @@
+.white {
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+
+}
+
+.course-image{
+    width: 300px;
+    height: 200px;
+}
+
+.course-info {
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+}
+
+.course-title{
+    margin-top:-25px;
+}
+
+.course-button {
+    cursor: pointer;
+    color: wheat;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    background-color: #880808;
+    padding-bottom: 0.5rem;
+    height: 40px;
+    text-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);
+    transition-timing-function: ease-in;
+    transition: all 1s;
+
+}
+
+.add-lesson-sign {
+    width: 15%;
+    margin: auto;
+    height: 200px;
+    transition-timing-function: ease-in;
+    transition: all 1s;
+   
+    object-fit: contain;
+}
+
+.add-lesson-sign:hover {
+    cursor: pointer;
+    transform: scale(1.08);
+}
+
+.add-lesson-img{
+    margin: auto;
+}
+
+#new-course-form{
+    display: none;
+}
+
+.btn-student{
+    width: 200px;
+    height: 40px;
+    margin-top: 60px;
+}

@@ -4,7 +4,7 @@ import { Nav, NavItem, NavLink } from "react-bootstrap"
 import Logout from "./Logout";
 import '../css/Navbar.css'
 
-function NavbarTeacher() {
+function NavbarUser() {
     const navigate = useNavigate()
     const [show, handleShow] = useState(false);
     const transitionNavBar = () => {
@@ -22,22 +22,27 @@ function NavbarTeacher() {
     const user = localStorage.getItem("token");
 
     const handleLogout = () => {
-        		localStorage.removeItem("token");
-        	};
+        localStorage.removeItem("token");
+    };
 
     return (
 
         <div>
             <Nav className={`nav ${show && 'nav_wood'}`} defaultSelected="Home">
                 <NavItem eventKey="Logo">
-                    <Link to={"/teacherPage"} className='logo'>
-                        <h2 style={{marginTop: "25px"}}>COURSMANIA</h2>
+                    <Link to={"/studenPage"} className='logo'>
+                        <h2 style={{ marginTop: "25px" }}>COURSMANIA</h2>
                     </Link>
                 </NavItem>
                 <div className='nav-components'>
+                    <NavItem eventKey="Home">
+                        <Link to={"/studentPage"} className="nav-items">
+                            <span>Home</span>
+                        </Link>
+                    </NavItem>
                     <NavItem eventKey="Courses">
-                        <Link to={"/teacherPage"} className="nav-items">
-                            <span>Courses</span>
+                        <Link to={"/studentPage/courses"} className="nav-items">
+                            <span>My Courses</span>
                         </Link>
                     </NavItem>
                     <NavItem eventKey="Logout">
@@ -52,4 +57,4 @@ function NavbarTeacher() {
     )
 }
 
-export default NavbarTeacher
+export default NavbarUser

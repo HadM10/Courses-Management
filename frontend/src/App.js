@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Login from "./components/Signin";
 import TeacherPage from './components/TeacherPage';
 import AdminPage from './components/AdminPage';
+import StudentPage from './components/StudentPage'
 
 
 const user = localStorage.getItem("token");
@@ -19,9 +20,10 @@ function App() {
           {/* <Route path={"/"} element={<Home />} /> */}
            <Route path="/register" element={<Signup />} />
            <Route path="/login" exact element={<Login />} />
-           {user && <Route path="/teacherPage" exact element={<TeacherPage />} />}
+           <Route path="/teacherPage" exact element={<TeacherPage />} />
+          <Route path="/studentPage" exact element={<StudentPage />} />
            <Route path="/adminPage" exact element={<AdminPage />} />
-           {user==null && <Route path="/" element={<Navigate replace to="/login" />} />}
+           <Route path="/" element={<Navigate replace to="/login" />} />
           </Routes>
     </div>
   );
