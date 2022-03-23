@@ -4,36 +4,23 @@ import { Link, useParams } from 'react-router-dom';
 import axios from "../axios";
 import NavbarUser from "./NavbarUser";
 
-function Studentpage() {
+function MyCoursesStudent() {
 
-  const [registerCourse, setRegisterCourse] = useState([]);
-
-  const [studentID, setStudentID] = useState({
-    students: "",
-  });
+  const [myNewCourse, setmyNewCourse] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    retrieveCourses()
+    retrieveMyCourses()
   }, []);
 
   const studentId = JSON.parse(localStorage.getItem("token"));
 
-  const confirmCourse = (id) => {
+ 
 
-    axios.post("http://localhost:5000/courses/newcourse", {"userId": studentId[2], "courseId" : id})
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch(e => {
-      console.log(e)
-    })
-}
-
-const retrieveCourses = async () => {
-  await axios.get(`http://localhost:5000/courses/`)
+const retrieveMyCourses = async () => {
+  await axios.get(`http://localhost:5000/courses/myCourses/${studentId[2]}`)
     .then((response) => {
-      setRegisterCourse(response.data)
+        setmyNewCourse(response.data)
       console.log(response.data)
     }).catch((error) => {
       console.log(error);
@@ -42,9 +29,9 @@ const retrieveCourses = async () => {
 }
 
 
-const displayCoursesRegister = () => {
+const displayMyCourses = () => {
   return (
-    registerCourse.map((course) => {
+    myNewCourse.map((course) => {
       return (
 
 
@@ -53,9 +40,7 @@ const displayCoursesRegister = () => {
           <div className="course-info">
             <h3 className="course-title">{course.title}</h3>
             <p className='course-description'>{course.description}</p>
-            <Link to='/studentPage/courses'><button className='course-button' onClick={() => confirmCourse(course._id)}> Choose Course
-            </button>
-            </Link>
+            <a href={course.pdf}><button className="course-button">Course PDF</button></a>
           </div>
 
         </div>
@@ -67,9 +52,9 @@ const displayCoursesRegister = () => {
 return (
   <div>
     <NavbarUser />
-    {displayCoursesRegister()}
+    {displayMyCourses()}
   </div>
 )
 }
 
-export default Studentpage
+export default MyCoursesStudent

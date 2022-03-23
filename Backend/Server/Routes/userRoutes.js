@@ -65,13 +65,10 @@ const validate = (data) => {
 };
 
 router.route('/')
-    .get(usersController.FindUser)
-    .get(usersController.FindUsers)
-
-
-    
+    .get(usersController.FindUsers)  
 
 router.route('/:id')
-    .put(usersController.editUsers)
+    .patch(usersController.editUsers)
+    .get(usersController.FindUser)
 
 module.exports = router

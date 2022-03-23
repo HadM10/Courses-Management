@@ -40,7 +40,12 @@ const UsersSchema = new Schema({
     userType: {
         type: String,
         enum:["Admin", "Teacher", "Student"]
-    }
+    },
+
+    myCourses: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Courses"
+    }]
    
 }, { timestamps: true });
 

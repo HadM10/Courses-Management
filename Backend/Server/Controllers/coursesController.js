@@ -1,5 +1,6 @@
 //CONNECT TO DATABASE
 const Courses = require('../Models/Courses')
+const { ObjectId } = require('mongodb')
 
 //GET COURSES
 exports.getCourses = async (req, res) => {
@@ -11,12 +12,24 @@ exports.getCourses = async (req, res) => {
   }
 }
 
+//GET  private COURSES
+exports.getPrivateCourses = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const Course = await Courses.find({'students': userId})
+    res.json(Course);
+  } catch (error) {
+    res.status(404).json({ message: error })
+  }
+}
+
 //GET COURSE BY TEACHER
 
 exports.getTeacherCourses = async (req, res) => {
   try {
     const id = req.params.id
-    const Course = await Courses.find({teacher: id})
+    const Course = await Courses.find({ teacher: id })
+    .populate({ path: 'teacher', model: 'Users' })
     res.json(Course);
   } catch (error) {
     res.status(404).json({ message: error })
@@ -73,16 +86,29 @@ exports.editCourses = async (req, res) => {
   }
 }
 
-//EDIT OR UPDATE Whole Courses
-exports.editPartsCourses = async (req, res) => {
-  const CourseId = req.params.id;
-  const newCourse = {
-    teacher: req.body.title,
-  };
-  try {
-    const updateCourses = await Courses.findByIdAndUpdate({ _id: CourseId }, newCourse);
-    res.json(updateCourses);
+//ADD STUDENT COURSE
+exports.addMyCourses = async (req, res) => {
+    const courseId = req.body.courseId
+    const userId = req.body.userId;
+
+    console.log("userId", userId)
+    console.log("courseId", courseId)
+
+    //DATETIME NOT AVAILABLE ANYMORE
+    const Course = await Courses.find({ _id: courseId })
+    console.log('course', Course[0])
+    let myCourses = Course[0]
+  
+    myCourses.students.push(Object(userId))
+    console.log("the courses", myCourses)
+    try {
+    const newAddedCourse = await Courses.findByIdAndUpdate({ _id: courseId }, myCourses)
+
+    res.json(newAddedCourse);
   } catch (error) {
-    res.status(400).json({ message: error })
+    res.status(404).json({ message: error })
   }
 }
+
+
+

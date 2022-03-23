@@ -5,7 +5,7 @@ const Users = require('../Models/Users')
 //FIND All USERS
 exports.FindUsers = async (req, res) => {
   try {
-    const allUsers = await Users.find({})
+    const allUsers = await Users.find()
     res.json(allUsers);
   } catch (error) {
     res.status(400).json({ message: error })
@@ -44,3 +44,27 @@ exports.editUsers = async (req, res) => {
     res.status(400).json({ message: error })
   }
 }
+
+// //ADD STUDENT COURSE
+// exports.addMyCourses = async (req, res) => {
+//   try {
+//     const courseId = req.body.courseId
+//     const userId = req.params.id;
+
+//     console.log(userId)
+
+//     //DATETIME NOT AVAILABLE ANYMORE
+//     const Users = await Users.find({ _id: userId })
+//     let myCourses = Users[0].myCourses
+    
+//     Users[0].myCourses = myCourses
+  
+//     myCourses.push({ "courseId": ObjectId(id), "myCourses": req.body.myCourses })
+
+//     const newCourse = await Users.findByIdAndUpdate({ _id: userId }, myCourses[0])
+
+//     res.json(newCourse);
+//   } catch (error) {
+//     res.status(404).json({ message: error })
+//   }
+// }
