@@ -13,6 +13,7 @@ function TeacherPage() {
         photo: "",
         pdf: "",
         teacher:"",
+        teachername:""
     });
 
     const handleChange = ({ currentTarget: input }) => {
@@ -51,7 +52,8 @@ function TeacherPage() {
     }
 
     const addCourse = () => {
-        newCourse.teacher = TeacherID[2]
+        newCourse.teacher = TeacherID[2];
+        newCourse.teachername = TeacherID[3];
         document.getElementById('new-course-form').style.display = "block";
         
     }

@@ -8,6 +8,9 @@ import Login from "./components/Signin";
 import TeacherPage from './components/TeacherPage';
 import AdminPage from './components/AdminPage';
 import StudentPage from './components/StudentPage'
+import StudentListforAdmin from './components/Studentlists'
+// import TeacherListforAdmin from './components/Teacherlists'
+
 
 
 const user = localStorage.getItem("token");
@@ -23,6 +26,8 @@ function App() {
         <Route path="/teacherPage" exact element={<TeacherPage />} />
         <Route path="/studentPage" exact element={<StudentPage />} />
         <Route path="/adminPage" exact element={<AdminPage />} />
+        <Route path="/adminPage/studentslist" exact element={<StudentListforAdmin />} />
+        {/* <Route path="/adminPage/teacherslist" exact element={<TeacherListforAdmin />} /> */}
         <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>
     </div>
