@@ -45,6 +45,7 @@ exports.addCourses = async (req, res) => {
     description: req.body.description,
     photo: req.body.photo,
     teacher: req.body.teacher,
+    teachername: req.body.teachername,
     students: req.body.students
   });
 
@@ -76,6 +77,7 @@ exports.editCourses = async (req, res) => {
     description: req.body.description,
     photo: req.body.photo,
     teacher: req.body.teacher,
+    teachername: req.body.teachername,
     students: req.body.students
   };
   try {

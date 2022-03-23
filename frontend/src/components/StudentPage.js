@@ -52,6 +52,7 @@ const displayCoursesRegister = () => {
           <img src={course.photo} alt="course" className="course-image"></img>
           <div className="course-info">
             <h3 className="course-title">{course.title}</h3>
+            <h3 className="course-title">Teacher: {course.teachername}</h3>
             <p className='course-description'>{course.description}</p>
             <Link to='/studentPage/courses'><button className='course-button' onClick={() => confirmCourse(course._id)}> Choose Course
             </button>

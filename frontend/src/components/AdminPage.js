@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../css/TeacherPage.css';
 import { Link, useParams } from 'react-router-dom';
 import axios from "../axios";
-import NavbarTeacher from "./NavbarTeacher";
+import NavbarAdmin from "./NavbarAdmin";
 
 function AdminPage() {
     const [Courses, setCourses] = useState([]);
@@ -33,6 +33,7 @@ function AdminPage() {
                             <img src={Course.photo} alt="course" className="course-image"></img>
 
                             <div className="course-info">
+                                <h3 className="course-title">Teacher: {Course.teachername}</h3>
                                 <h3 className="course-title">{Course.title}</h3>
                                 <p className='course-description'>{Course.description}</p>
 
@@ -45,7 +46,7 @@ function AdminPage() {
     }
     return (
         <div>
-            <NavbarTeacher />
+            <NavbarAdmin />
             <div className="teacher-header">
             <h1 className='get-started'>ALL COURSES</h1>
             <h2 className='new-course'>__________Latest Courses__________</h2>

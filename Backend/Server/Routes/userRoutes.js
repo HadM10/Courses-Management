@@ -50,7 +50,8 @@ router.post("/login", async (req, res) => {
         const token = user.userType
         const token1 = user.email
         const token2 = user.id
-        res.status(200).send({ data:[token, token1, token2 ] , message: "logged in successfully" });
+        const token3 = user.fullname
+        res.status(200).send({ data:[token, token1, token2, token3 ] , message: "logged in successfully" });
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
     }
