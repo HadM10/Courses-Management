@@ -55,7 +55,7 @@ function TeacherPage() {
     }
 
     const editCourse = (id) => {
-        axios.put(`http://localhost:5000/courses/${id}`)
+        axios.put(`http://localhost:5000/courses/${id}`, newCourse)
             .then((response) => {
                 setCourses(response.data)
                 console.log(response.data)
