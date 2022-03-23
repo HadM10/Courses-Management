@@ -63,7 +63,7 @@ function TeacherPage() {
     }
 
     const editCourse = (id) => {
-        axios.put(`http://localhost:5000/courses/${id}`)
+        axios.patch(`http://localhost:5000/courses/${id}`, newCourse)
             .then((response) => {
                 setCourses(response.data)
                 console.log(response.data)
@@ -89,6 +89,7 @@ function TeacherPage() {
                             <div className="course-info">
                                 <h3 className="course-title">{Course.title}</h3>
                                 <p className='course-description'>{Course.description}</p>
+                                <span>{Course}</span>
                                 <button className='course-button' onClick={() => updateCourse()}>Edit</button>
                                 <button className='course-button' onClick={() => deleteCourse(Course._id)}>Delete</button>
 

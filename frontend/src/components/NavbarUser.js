@@ -30,7 +30,7 @@ function NavbarUser() {
         <div>
             <Nav className={`nav ${show && 'nav_wood'}`} defaultSelected="Home">
                 <NavItem eventKey="Logo">
-                    <Link to={"/studenPage"} className='logo'>
+                    <Link to={"/studentPage"} className='logo'>
                         <h2 style={{ marginTop: "25px" }}>COURSMANIA</h2>
                     </Link>
                 </NavItem>

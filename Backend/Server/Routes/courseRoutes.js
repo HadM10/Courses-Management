@@ -8,8 +8,17 @@ router.route('/')
 
 router.route('/:id')
     .put(coursesController.editCourses)
-    .patch(coursesController.editPartsCourses)
     .delete(coursesController.deleteCourses)
     .get(coursesController.getTeacherCourses)
+
+router.route('/myCourses/:id')
+    .get(coursesController.getPrivateCourses)
+
+router.route('/newcourse')
+    .post(coursesController.addMyCourses)
+
+
+
+
 
 module.exports = router
