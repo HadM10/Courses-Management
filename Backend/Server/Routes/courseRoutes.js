@@ -8,6 +8,7 @@ router.route('/')
 
 router.route('/:id')
     .put(coursesController.editCourses)
+    .patch(coursesController.editPartsCourses)
     .delete(coursesController.deleteCourses)
     .get(coursesController.getTeacherCourses)
 

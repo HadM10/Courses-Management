@@ -12,16 +12,23 @@ const Login = () => {
 		setData({ ...data, [input.name]: input.value });
 	};
 	
+	
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const url = "http://localhost:5000/users/login";
 			const { data: res } = await axios.post(url, data);
-			axios.get("http://localhost:5000/users/login")
-			console.log(data);
-			localStorage.setItem("token", data);	
-			navigate("/adminPage");
+			// console.log(res.data);
+			localStorage.setItem("token", JSON.stringify(res.data));
+			const TokenInfo = JSON.parse(localStorage.getItem("token"));
+			// console.log(TokenInfo[0])
+			if(res.data[0] == "Teacher") {
+				navigate("/teacherPage");}
+				else if (res.data[0] == "Admin") {
+					navigate("/adminPage");}
+					else if (res.data[0] == "Student") {
+						navigate("/studentPage");}
 		} catch (error) {
 			if (
 				error.response &&

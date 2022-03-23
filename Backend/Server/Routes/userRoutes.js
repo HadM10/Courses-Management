@@ -47,9 +47,10 @@ router.post("/login", async (req, res) => {
             return res.status(401).send({ message: "Invalid Email or Password" });
 
         // const token = user.generateAuthToken();
-        const token = Users.userType
-        const userType = Users.userType;
-        res.status(200).send({ data: token, message: "logged in successfully" });
+        const token = user.userType
+        const token1 = user.email
+        const token2 = user.id
+        res.status(200).send({ data:[token, token1, token2 ] , message: "logged in successfully" });
     } catch (error) {
         res.status(500).send({ message: "Internal Server Error" });
     }
@@ -65,6 +66,10 @@ const validate = (data) => {
 
 router.route('/')
     .get(usersController.FindUser)
+    .get(usersController.FindUsers)
+
+
+    
 
 router.route('/:id')
     .put(usersController.editUsers)

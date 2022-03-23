@@ -7,14 +7,18 @@ import NavbarUser from "./NavbarUser";
 function Studentpage() {
 
   const [registerCourse, setRegisterCourse] = useState([]);
+ 
+  const [studentID, setStudentID] = useState({
+    students:"",
+});
 
   useEffect(() => {
     window.scrollTo(0, 0);
     retrieveCourses()
   }, []);
 
-  const retrieveCourses = () => {
-    axios.get("http://localhost:5000/courses")
+  const retrieveCourses = async () => {
+    await axios.get("http://localhost:5000/courses")
       .then((response) => {
         setRegisterCourse(response.data)
         console.log(response.data)
@@ -23,7 +27,7 @@ function Studentpage() {
 
       });
   }
-  console.log(registerCourse)
+
 
   const displayCoursesRegister = () => {
     return (

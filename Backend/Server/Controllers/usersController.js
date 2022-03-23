@@ -2,10 +2,22 @@
 const Users = require('../Models/Users')
 
 
-//FIND USER
+//FIND All USERS
+exports.FindUsers = async (req, res) => {
+  try {
+    const allUsers = await Users.find({})
+    res.json(allUsers);
+  } catch (error) {
+    res.status(400).json({ message: error })
+  }
+}
+
+
+
+//FIND ONE USER
 exports.FindUser = async (req, res) => {
   try {
-    const theUser = await Users.find({email: req.body.data.email})
+    const theUser = await Users.findById({_id: req.params.id})
     res.json(theUser);
     console.log(theUser)
   } catch (error) {
