@@ -35,6 +35,11 @@ function NavbarAdmin() {
                     </Link>
                 </NavItem>
                 <div className='nav-components'>
+                <NavItem eventKey="Courses">
+                    <Link to={"/adminPage"} className='nav-items'>
+                        <span>Courses</span>
+                    </Link>
+                </NavItem>
                     <NavItem eventKey="Teachers">
                         <Link to={"/adminPage/teacherslist"} className="nav-items">
                             <span>Teachers</span>

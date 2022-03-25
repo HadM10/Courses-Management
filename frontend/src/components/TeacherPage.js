@@ -12,8 +12,6 @@ function TeacherPage() {
         description: "",
         photo: "",
         pdf: "",
-        teacher:"",
-        teachername:""
     });
 
     const handleChange = ({ currentTarget: input }) => {
@@ -63,7 +61,7 @@ function TeacherPage() {
     }
 
     const editCourse = (id) => {
-        axios.patch(`http://localhost:5000/courses/${id}`, newCourse)
+        axios.put(`http://localhost:5000/courses/${id}`, newCourse)
             .then((response) => {
                 setCourses(response.data)
                 console.log(response.data)
@@ -75,6 +73,7 @@ function TeacherPage() {
 
     const deleteCourse = (id) => {
         axios.delete(`http://localhost:5000/courses/${id}`)
+        window.location.reload(false);
     }
 
     const displayCourses = () => {
@@ -89,7 +88,7 @@ function TeacherPage() {
                             <div className="course-info">
                                 <h3 className="course-title">{Course.title}</h3>
                                 <p className='course-description'>{Course.description}</p>
-                                <span>{Course}</span>
+                                
                                 <button className='course-button' onClick={() => updateCourse()}>Edit</button>
                                 <button className='course-button' onClick={() => deleteCourse(Course._id)}>Delete</button>
 
@@ -99,6 +98,7 @@ function TeacherPage() {
                             <form className="form_container" onSubmit={() => editCourse(Course._id)}>
                                 <h2>Edit The Course</h2>
                                 <input
+                                id="title-id"
                                     type="text"
                                     placeholder="Title"
                                     name="title"
@@ -107,6 +107,7 @@ function TeacherPage() {
                                     className="input"
                                 />
                                 <input
+                                 id="description-id"
                                     type="text"
                                     placeholder="Description"
                                     name="description"
@@ -115,6 +116,7 @@ function TeacherPage() {
                                     className="input"
                                 />
                                 <input
+                                 id="photo-id"
                                     type="text"
                                     placeholder="Photo"
                                     name="photo"
@@ -123,6 +125,7 @@ function TeacherPage() {
                                     className="input"
                                 />
                                 <input
+                                 id="pdf-id"
                                     type="text"
                                     placeholder="PDF"
                                     name="pdf"

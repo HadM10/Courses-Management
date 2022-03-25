@@ -34,7 +34,7 @@ function NavbarTeacher() {
                         <h2 style={{marginTop: "25px"}}>COURSMANIA</h2>
                     </Link>
                 </NavItem>
-                <div className='nav-components'>
+                <div className='nav-components-teacher'>
                     <NavItem eventKey="Courses">
                         <Link to={"/teacherPage"} className="nav-items">
                             <span>Courses</span>

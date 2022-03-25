@@ -6,6 +6,7 @@ router.route('/')
     .get(coursesController.getCourses)
     .post(coursesController.addCourses)
 
+
 router.route('/:id')
     .put(coursesController.editCourses)
     .delete(coursesController.deleteCourses)

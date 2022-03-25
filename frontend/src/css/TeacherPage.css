@@ -22,17 +22,20 @@
 }
 
 .course-image{
-    width: 300px;
-    height: 200px;
+    width: 350px;
+    height: 250px;
+    background-size:contain;
 }
 
 .course-info {
     padding: 20px;
+    margin-top: -20px;
 }
 
 .course-button {
     cursor: pointer;
     color: wheat;
+    float: right;
     outline: none;
     border: none;
     font-weight: 700;
@@ -47,6 +50,7 @@
     text-shadow: 1px 2px 6px rgba(0, 0, 0), 1px 2px 4px rgba(0, 0, 0);
     transition-timing-function: ease-in;
     transition: all 1s;
+    margin-top: 30px;
 
 }
 

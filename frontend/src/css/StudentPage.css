@@ -6,18 +6,21 @@
     display: flex;
     flex-direction: row;
     margin: 50px;
+    
 
 }
 
 .course-image{
-    width: 300px;
-    height: 200px;
+    width: 350px;
+    height: 250px;
+    background-size:contain;
 }
 
 .course-info {
     padding: 20px;
     width: 300px;
     height: 200px;
+    margin-top: -20px;
 }
 
 .course-title{
@@ -28,6 +31,7 @@
     cursor: pointer;
     color: wheat;
     outline: none;
+    float: right;
     border: none;
     font-weight: 700;
     border-radius: 0.2vw;

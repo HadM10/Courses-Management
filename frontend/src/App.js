@@ -8,6 +8,7 @@ import Login from "./components/Signin";
 import TeacherPage from './components/TeacherPage';
 import AdminPage from './components/AdminPage';
 import StudentPage from './components/StudentPage'
+import StudentListforAdmin from './components/Studentlists'
 
 
 import MyCoursesStudent from './components/MyCoursesStudent';

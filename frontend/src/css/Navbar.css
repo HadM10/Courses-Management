@@ -26,6 +26,13 @@
 
 }
 
+.nav-components-teacher{
+    display: flex;
+    margin-top: 25px;
+    width: 30%;
+    margin: auto;
+}
+
 .nav-items {
     color: wheat;
     display: flex;
@@ -45,7 +52,6 @@
 }
 
 .logo {
-    margin-right: 200px;
     color: wheat;
     display: flex;
     text-decoration: none;
